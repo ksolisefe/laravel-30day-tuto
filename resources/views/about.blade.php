@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    Hello from the about page
-</body>
-</html>
+<x-layout>
+    <x-slot:heading>
+        About Page
+    </x-slot:heading>
+
+    <h1>About Blade!</h1>
+</x-layout>

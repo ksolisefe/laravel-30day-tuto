@@ -1,11 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Page</title>
-</head>
-<body>
+<x-layout>
+    <x-slot:heading>
+        Contact Page
+    </x-slot:heading>
+
+    <h1>Contact Blade!</h1>
     <h1>Thank you for reaching out to our contact page, here you can see the following: </h1>
     <ul>
         <li>Phone Number</li>
@@ -13,5 +11,4 @@
         <li>P.O. Box</li>
         <li>Alternative method of contacts</li>
     </ul>
-</body>
-</html>
+</x-layout>
