@@ -2,9 +2,13 @@
 
 namespace Database\Seeders;
 
+use App\Models\Job;
 use App\Models\User;
+use App\Models\Tag;
+use App\Models\Employer;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,9 +19,15 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
-        User::factory()->create([
-            'name' => 'Test User',
+        User::factory(1)->create([
+            'first_name' => 'Test',
+            'last_name' => 'User',
             'email' => 'test@example.com',
+            'password' => Hash::make('password'),
         ]);
+
+        Tag::factory(10)->create();
+
+        Job::factory(10)->create();
     }
 }
