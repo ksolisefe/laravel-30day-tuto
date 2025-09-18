@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\Tag;
-use App\Models\Employer;
+use App\Models\Post;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -29,5 +29,7 @@ class DatabaseSeeder extends Seeder
         Tag::factory(10)->create();
 
         Job::factory(10)->create();
+
+        Post::factory(10)->create();
     }
 }

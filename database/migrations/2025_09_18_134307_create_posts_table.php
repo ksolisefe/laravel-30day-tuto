@@ -15,9 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('subtitle');
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->text('content');
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
+        });
+
+        Schema::create('post_tag', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('post_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained()->cascadeOnDelete();
+            $table->unique(['post_id', 'tag_id']);
         });
     }
 
@@ -26,6 +33,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('post_tag');
         Schema::dropIfExists('posts');
     }
 };
