@@ -10,9 +10,10 @@
                     :title="$post['title']"
                     :subtitle="$post['subtitle']"
                     :content="$post['content']"
-                    :userId="$post['user_id']"
+                    :user="$post['user']"
                     :href="url('/posts/'.$post['id'])"
                     :content="$post['content']"
+                    :tags="$post['tags']"
                 />
             </div>
         @endforeach

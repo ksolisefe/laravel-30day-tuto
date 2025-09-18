@@ -26,8 +26,9 @@ Route::get('/contact', function () {
 });
 
 Route::get('/posts', function () {
+    $posts = Post::with('user')->get();
     return view('posts', [
-        'posts' => Post::all()
+        'posts' => $posts
     ]);
 });
 
