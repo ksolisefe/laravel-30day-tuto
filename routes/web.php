@@ -4,10 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Models\Job;
 use App\Models\Post;
 
+// -------------------- Home Page --------------------
 Route::get('/', function () {
     return view('home');
 });
 
+// -------------------- /jobs Routes --------------------
+
+// List all jobs
 Route::get('/jobs', function () {
     $jobs = Job::with(['employer', 'tags'])->latest()->simplePaginate(3);
     // $jobs = Job::all();
@@ -28,7 +32,11 @@ Route::get('/jobs/{id}', function ($id) {
 });
 
 Route::post('/jobs', function () {
-    
+    request()->validate([
+        'title' => ['required', 'min:3'],
+        'salary' => ['required']
+    ]);
+
     Job::create([
         'title' => request('title'),
         'salary' => request('salary'),
@@ -38,10 +46,14 @@ Route::post('/jobs', function () {
     return redirect('/jobs');
 });
 
+// -------------------- /contact Route --------------------
 Route::get('/contact', function () {
     return view('contact');
 });
 
+// -------------------- /posts Routes --------------------
+
+// List all posts
 Route::get('/posts', function () {
     $posts = Post::with('user', 'tags')->get();
     return view('posts', [
@@ -49,6 +61,7 @@ Route::get('/posts', function () {
     ]);
 });
 
+// Show single post
 Route::get('/posts/{id}', function ($id) {
     $post = Post::find($id);
 
