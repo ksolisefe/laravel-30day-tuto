@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class SessionController extends Controller
 {
@@ -11,6 +13,25 @@ class SessionController extends Controller
     }
 
     public function store() {
-        dd('todo for later');
+        $valAttrs = request()->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required']
+        ]);
+        
+        if (! Auth::attempt($valAttrs)) {
+            throw ValidationException::withMessages([
+                'email' => 'Sorry, the credentials provided do not match'
+            ]);
+        }
+
+        request()->session()->regenerate();
+
+        return redirect('/jobs');
+    }
+
+    public function destroy() {
+        Auth::logout();
+
+        return redirect('/');
     }
 }

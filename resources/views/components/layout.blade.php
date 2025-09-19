@@ -35,6 +35,10 @@
                         @endguest
                         @auth
                             <p>Your name!</p>
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <x-form-button>Log Out</x-form-button>
+                            </form>
                         @endauth
                     </el-dropdown>
                 </div>
