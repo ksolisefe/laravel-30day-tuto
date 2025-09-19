@@ -3,9 +3,19 @@
 use App\Http\Controllers\JobController;
 use App\Http\Controllers\RegisteredUserController;
 use App\Http\Controllers\SessionController;
+use App\Jobs\TranslateJob;
 use App\Mail\JobPosted;
 use Illuminate\Support\Facades\Route;
+use App\Models\Job;
 use App\Models\Post;
+
+Route::get('test', function () {
+    $job = Job::first();
+
+    TranslateJob::dispatch($job);
+
+    return 'Done';
+});
 
 // -------------------- Home Page --------------------
 // Route::get('/', function () {
