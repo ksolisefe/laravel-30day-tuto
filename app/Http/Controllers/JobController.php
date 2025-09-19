@@ -62,7 +62,7 @@ class JobController extends Controller
         return redirect('/jobs/' . $job->id);
     }
 
-    public function destroy() {
+    public function destroy(Job $job) {
         // authorize (On hold/..)
 
         // delete the jonb
